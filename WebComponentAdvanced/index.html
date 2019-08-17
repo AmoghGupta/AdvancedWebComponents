@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Web Components - Modal</title>
+    <script src="modal.js"></script>
+
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        body{
+            margin: 2rem;
+            font-family: sans-serif;            
+        }
+        .hide{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+   <uc-modal class="hide">
+       <h1 slot="title">Please confirm</h1>
+       <p slot="main">Confirm if you want to.</p>
+   </uc-modal>
+
+   <p>Please confirm your choice</p>
+   <button onclick="showPopup()">Show Details & Confirm</button>
+
+   <script>
+
+       var modal = document.querySelector('uc-modal');
+       modal.addEventListener('cancel', ()=>{
+            modal.classList.add('hide');
+       })
+       
+       function showPopup(){
+           modal.setAttribute('opened',''); 
+       }
+   </script>
+</body>
+</html>
